@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Стеллаж — учёт складских запасов</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&family=Unbounded:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <div class="brand"><span class="mark"><i></i><i></i><i></i></span><span>Стеллаж</span></div>
+    <nav class="nav" id="nav"></nav>
+    <div class="side-foot">
+      <span>Данные сохраняются в вашем браузере.</span>
+      <button data-action="reset-demo">Вернуть демо-данные</button>
+    </div>
+  </aside>
+  <main id="main"></main>
+</div>
+
+<dialog id="dlgNew">
+  <div class="dlg">
+    <h2>Новая позиция</h2>
+    <p class="lead">Карточка товара в справочнике. Остаток появится после проведения приходной накладной.</p>
+    <div class="fld">
+      <label for="nName">Название</label>
+      <input class="field" id="nName" maxlength="60" autocomplete="off" placeholder="Например, Скотч 48 мм">
+      <span class="err" id="err-name"></span>
+    </div>
+    <div class="grid2">
+      <div class="fld">
+        <label for="nSku">Артикул</label>
+        <input class="field" id="nSku" maxlength="16" autocomplete="off" placeholder="Создать автоматически">
+        <span class="err" id="err-sku"></span>
+      </div>
+      <div class="fld">
+        <label for="nLoc">Ячейка</label>
+        <input class="field" id="nLoc" maxlength="12" autocomplete="off" placeholder="A-01-1">
+        <span class="err" id="err-location"></span>
+      </div>
+      <div class="fld">
+        <label for="nCat">Категория</label>
+        <select class="field" id="nCat"></select>
+        <span class="err" id="err-category"></span>
+      </div>
+      <div class="fld">
+        <label for="nUnit">Единица</label>
+        <select class="field" id="nUnit"></select>
+        <span class="err" id="err-unit"></span>
+      </div>
+      <div class="fld">
+        <label for="nMin">Минимальный остаток</label>
+        <input class="field" id="nMin" inputmode="numeric" autocomplete="off" value="5">
+        <span class="err" id="err-min"></span>
+      </div>
+    </div>
+    <div class="dlg-actions">
+      <button class="btn" data-action="close-dialog">Отмена</button>
+      <button class="btn primary" data-action="new-submit">Добавить позицию</button>
+    </div>
+  </div>
+</dialog>
+
+<dialog id="dlgPartner">
+  <div class="dlg">
+    <h2 id="pTitle">Новый контрагент</h2>
+    <p class="lead">Поставщики выбираются в приходных накладных, покупатели — при отгрузке в актах списания.</p>
+    <div class="fld">
+      <label for="pName">Название</label>
+      <input class="field" id="pName" maxlength="60" autocomplete="off" placeholder="ТОО «Название»">
+      <span class="err" id="perr-name"></span>
+    </div>
+    <div class="grid2">
+      <div class="fld">
+        <label for="pKind">Тип</label>
+        <select class="field" id="pKind"><option value="supplier">Поставщик</option><option value="buyer">Покупатель</option></select>
+        <span class="err" id="perr-kind"></span>
+      </div>
+      <div class="fld">
+        <label for="pPhone">Телефон</label>
+        <input class="field" id="pPhone" maxlength="18" autocomplete="off" placeholder="+7 727 000-00-00">
+        <span class="err" id="perr-phone"></span>
+      </div>
+      <div class="fld">
+        <label for="pBin">БИН / ИИН</label>
+        <input class="field" id="pBin" inputmode="numeric" maxlength="12" autocomplete="off" placeholder="12 цифр">
+        <span class="err" id="perr-bin"></span>
+      </div>
+    </div>
+    <div class="dlg-actions">
+      <button class="btn" data-action="close-dialog">Отмена</button>
+      <button class="btn primary" id="pSubmit" data-action="partner-submit">Добавить</button>
+    </div>
+  </div>
+</dialog>
+
+<div id="toast" aria-live="polite"></div>
+
+<script src="js/logic.js"></script>
+<script src="../tests/test-cases.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
