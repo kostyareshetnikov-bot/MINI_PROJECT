@@ -2,9 +2,7 @@
 // logic.js — данные и правила предметной области (без обращения к DOM).
 // Используется и в браузере, и в Node.js (tests/run-tests.js).
 
-/* =====================================================
-   1. Модель данных: перечисления и структуры
-   ===================================================== */
+/* 1. Модель данных: перечисления и структуры */
 const Status = Object.freeze({ OK: 'ok', LOW: 'low', OUT: 'out' });
 const DocType = Object.freeze({ IN: 'in', OUT: 'out' });
 const DocStatus = Object.freeze({ DRAFT: 'draft', POSTED: 'posted', CANCELLED: 'cancelled' });
@@ -109,9 +107,7 @@ function makeSeedStore(withHistory) {
   return store;
 }
 
-/* =====================================================
-   2. Функции обработки данных
-   ===================================================== */
+/* 2. Функции обработки данных */
 function normalize(s) {
   return String(s == null ? '' : s).trim().toLowerCase().replace(/ё/g, 'е').replace(/\s+/g, ' ');
 }
