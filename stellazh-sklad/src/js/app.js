@@ -1,9 +1,7 @@
 'use strict';
 // app.js — хранение в localStorage, отрисовка интерфейса и обработка событий.
 
-/* =====================================================
-   3. Хранение
-   ===================================================== */
+/* 3. Хранение */
 const KEY = 'stellazh-v3';
 function save() { try { localStorage.setItem(KEY, JSON.stringify(store)); } catch (e) { /* хранилище недоступно */ } }
 function load() {
@@ -17,9 +15,7 @@ function load() {
 }
 let store = load() || makeSeedStore(true);
 
-/* =====================================================
-   4. Интерфейс
-   ===================================================== */
+/* 4. Интерфейс */
 const $ = s => document.querySelector(s);
 const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const fmt = n => Number(n).toLocaleString('ru-RU');
